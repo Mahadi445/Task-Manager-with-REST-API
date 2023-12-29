@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block filter_form %}
+{% endblock %}
+
+{% block content %}
+  <h2>Task Detail</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card" style="width: 18rem;">
+          {% if object.photo %}
+            <img class="card-img-top" src="{{ object.photo.url }}" alt="Photo">
+          {% else %}
+            <p>No photo available</p>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title"><span>Title : {{ object.title }}</span></h5>
+            <p class="card-text"><span>Description: {{ object.description }}</span>}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"> <span>Priority: {{ object.priority }}</span></li>
+            <li class="list-group-item"> <span>Complete: {% if object.is_complete %}Yes{% else %}No{% endif %}</span></li>
+            <li class="list-group-item"> <span>Created At: {{ object.created_at }}</span> </li>
+            <li class="list-group-item"> <span>Updated At: {{ object.updated_at }}</span></li>
+            <li class="list-group-item"> <span>Due Date: {{ object.due_date }}</span></li>
+          </ul>
+          <div class="card-body">
+            <a  class="btn btn-warning  mt-2" href="{% url 'task_update' pk=object.pk %}">Edit Task</a> <br/>
+            <a  class="btn btn-danger mt-2" href="{% url 'task_delete' pk=object.pk %}">Delete Task</a> <br/>
+            <a  class="btn btn-primary mt-2" href="{% url 'task_list' %}">Back to Task List</a> <br/>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+{% endblock %}

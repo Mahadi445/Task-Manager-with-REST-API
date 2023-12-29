@@ -1,0 +1,20 @@
+{% extends 'auth/login.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center mt-4 p-4 shadow-lg w-50 mx-auto">
+        <h2>Register</h2> 
+        <form method="post" action="{% url 'register' %}">
+          {% csrf_token %}
+          {{ form.errors }}
+          {{ form.username.label_tag }} <br/> {{ form.username }} <br/>
+          {{ form.password1.label_tag }} <br/> {{ form.password1 }} <br/>
+          {{ form.password2.label_tag }}  <br/>{{ form.password2 }} <br/>  <br/> 
+          <button class="btn btn-primary w-25" type="submit">Register</button>
+        </form>
+        <p> You  have an account here is  <a  href="{% url 'login' %}">login</a> <br/> </p>
+    <div>   
+</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block filter_form %}
+{% endblock %}
+
+{% block content %}
+  <h2 class="text-center mt-3 mb-4">{% if form.instance.pk %}Edit Task{% else %}Create New Task{% endif %}</h2>
+  <div class="container p-4">
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <!-- Task Title -->
+      <div class="form-group row">
+        <label for="id_title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+          {{ form.title }}
+        </div>
+      </div>
+      
+      <!-- Due Date -->
+      <div class="form-group row">
+        <label for="id_due_date" class="col-sm-2 col-form-label">Due Date</label>
+        <div class="col-sm-10">
+          {{ form.due_date }}
+        </div>
+      </div>
+      
+      <!-- Priority -->
+      <div class="form-group row">
+        <label for="id_priority" class="col-sm-2 col-form-label">Priority</label>
+        <div class="col-sm-10">
+          {{ form.priority }}
+        </div>
+      </div>
+      
+      <!-- Photo -->
+      <div class="form-group row">
+        <label for="id_photo" class="col-sm-2 col-form-label">Photo</label>
+        <div class="col-sm-10">
+          {{ form.photo }}
+        </div>
+      </div>
+
+      <!-- Is Complete -->
+      <div class="form-group row">
+        <label for="id_is_complete" class="col-sm-2 col-form-label">Is Complete</label>
+        <div class="col-sm-10">
+          {{ form.is_complete }}
+        </div>
+      </div>
+
+      <!-- Task Description -->
+      <div class="form-group row">
+        <label for="id_description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+          {{ form.description }}
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary">Save Task</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

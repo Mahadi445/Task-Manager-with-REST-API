@@ -1,2 +1,8 @@
-# env file
+# env files
 env
+.env
+static
+media
+# database
+db.sqlite3 
+__pycache__

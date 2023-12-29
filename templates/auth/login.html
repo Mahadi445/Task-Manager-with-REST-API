@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this line to include Bootstrap from a CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>{% block title %}Login{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+        <div class="container">
+            <div class="text-center mt-4 p-4 shadow-lg w-50 mx-auto">
+                <h2>Login</h2> <br/>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.errors }}
+                    {{ form.username.label_tag }} <br/> {{ form.username }} <br/>
+                    {{ form.password.label_tag }} <br/> {{ form.password }} <br/> <br/>
+                    <button class="btn btn-primary w-25" type="submit">Login</button>
+                </form>
+                <p> You Don't have an account here is  <a  href="{% url 'register' %}">register</a> <br/> </p>
+            <div>   
+        </div>
+    {% endblock %}
+</body>
+</html>
